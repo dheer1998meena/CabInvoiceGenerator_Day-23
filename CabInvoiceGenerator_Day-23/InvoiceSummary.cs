@@ -9,21 +9,15 @@ namespace CabInvoiceGenerator_Day_23
         ///invoice summary length = length of the journey.
         ///totalfare = computed totalfare of the journey.
         public int numberOfRides;
+        public double totalFare;
         public double averageFare;
-        private double totalFare;
-        private int length;
+        public int length;
         // Creating parameterised constructor to initialise the data attributes with the user defined values.
-        public InvoiceSummary(double totalFare, int length, double averageFare)
-        {
-            this.averageFare = averageFare;
-            this.totalFare = totalFare;
-            this.length = length;
-        }
-
         public InvoiceSummary(int length, double totalFare, double averageFare)
         {
             this.length = length;
             this.totalFare = totalFare;
+            this.averageFare = averageFare;
         }
 
         /// Over riding the Equals method so as to match the value of the object references.

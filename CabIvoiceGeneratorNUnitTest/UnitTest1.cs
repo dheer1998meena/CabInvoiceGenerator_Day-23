@@ -45,9 +45,10 @@ namespace CabIvoiceGeneratorNUnitTest
             /// Act
             InvoiceSummary invoiceSummary = invoiceGenerator.CalculateTotalFare(rides);
             var resultHashCode = invoiceSummary.GetHashCode();
-            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(39.0, 3, 13.0);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3,39.0,13.0);
             var resulExpectedHashCode = expectedInvoiceSummary.GetHashCode();
             /// Assert
+            Assert.AreEqual(invoiceSummary, expectedInvoiceSummary);
         }
     }
 }
