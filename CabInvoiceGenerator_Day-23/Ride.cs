@@ -15,7 +15,7 @@ namespace CabInvoiceGenerator_Day_23
     /// </summary>
     public class Ride
     {
-        //variable 
+        //variable.
         public double distance;
         public int time;
         //Creating parameterized constructor for setting data.
