@@ -6,6 +6,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace CabInvoiceGenerator_Day_23
@@ -68,6 +69,28 @@ namespace CabInvoiceGenerator_Day_23
             }
             //Comparing total fare with minimum fare.
             return Math.Max(totalFare, minimumFare);
+        }
+
+        public InvoiceSummary CalculateTotalFare(Ride[] rides)
+        {
+            double totalFare = 0;
+            /// Exception handling for the null rides.
+            try
+            {
+                ///Calculating toatal fare.
+                foreach (Ride ride in rides)
+                {
+                    totalFare += this.CalculateTotalFare(ride.distance, ride.time);
+                }
+            }
+            catch (CabInvoiceException)
+            {
+                if (rides == null)
+                {
+                    throw new CabInvoiceException(CabInvoiceException.ExceptionType.NULL_RIDES, "Rides passed are null..");
+                }
+            }
+            return new InvoiceSummary(rides.Length, totalFare);
         }
     }
 }
