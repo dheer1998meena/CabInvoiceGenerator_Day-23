@@ -13,13 +13,14 @@ namespace CabInvoiceGenerator_Day_23
         private double totalFare;
         private int length;
         // Creating parameterised constructor to initialise the data attributes with the user defined values.
-        public InvoiceSummary(double totalFare, int length)
+        public InvoiceSummary(double totalFare, int length, double averageFare)
         {
+            this.averageFare = averageFare;
             this.totalFare = totalFare;
             this.length = length;
         }
 
-        public InvoiceSummary(int length, double totalFare)
+        public InvoiceSummary(int length, double totalFare, double averageFare)
         {
             this.length = length;
             this.totalFare = totalFare;

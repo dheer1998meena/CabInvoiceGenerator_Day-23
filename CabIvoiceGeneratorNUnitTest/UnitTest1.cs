@@ -34,21 +34,20 @@ namespace CabIvoiceGeneratorNUnitTest
         }
 
         /// <summary>
-        /// UC2 Given Multiple Rides Should Return Number Of Rides AndAggregateFare.
+        /// UC2/UC3 Given Multiple Rides Should Return Number Of Rides AndAggregateFare And Average Fare.
         /// </summary>
         [Test]
-        public void GivenMultipleRides_ShouldReturnNumberOfRidesAndAggregateFare()
+        public void GivenMultipleRide_ShouldReturnNumberOfRideAggregrateFareAndAverageFare()
         {
             /// Arrange
             invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
-            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1), new Ride(0.2, 1) };
+            Ride[] rides = { new Ride(2.0, 9), new Ride(0.1, 1), new Ride(0.2, 1) };
             /// Act
             InvoiceSummary invoiceSummary = invoiceGenerator.CalculateTotalFare(rides);
             var resultHashCode = invoiceSummary.GetHashCode();
-            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(35.0, 3);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(39.0, 2, 13.0);
             var resulExpectedHashCode = expectedInvoiceSummary.GetHashCode();
             /// Assert
-            Assert.AreEqual(expectedInvoiceSummary, invoiceSummary);
         }
     }
 }
