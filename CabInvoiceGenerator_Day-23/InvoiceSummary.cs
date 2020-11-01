@@ -29,12 +29,12 @@ namespace CabInvoiceGenerator_Day_23
             if (!(obj is InvoiceSummary))
                 return false;
             InvoiceSummary summary = (InvoiceSummary)obj;
-            return (this.numberOfRides == summary.numberOfRides) && (this.totalFare == summary.totalFare) && (this.averageFare == summary.averageFare);
+            return this.length == summary.length && this.totalFare == summary.totalFare && this.averageFare == summary.averageFare;
         }
         // Overriding equals method require overriding the GetHashCode method too else we get a compiler warning.
         public override int GetHashCode()
         {
-            return this.numberOfRides.GetHashCode() ^ this.totalFare.GetHashCode() ^ this.averageFare.GetHashCode() ^ this.length.GetHashCode();
+            return this.length.GetHashCode()^ this.totalFare.GetHashCode() ^ this.averageFare.GetHashCode() ;
         }
     }
 }

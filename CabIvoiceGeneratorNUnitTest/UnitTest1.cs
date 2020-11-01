@@ -46,7 +46,7 @@ namespace CabIvoiceGeneratorNUnitTest
             InvoiceSummary invoiceSummary = invoiceGenerator.CalculateTotalFare(rides);
             var resultHashCode = invoiceSummary.GetHashCode();
             InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3,39.0,13.0);
-            var resulExpectedHashCode = expectedInvoiceSummary.GetHashCode();
+            var resultExpectedHashCode = expectedInvoiceSummary.GetHashCode();
             /// Assert
             Assert.AreEqual(invoiceSummary, expectedInvoiceSummary);
         }
