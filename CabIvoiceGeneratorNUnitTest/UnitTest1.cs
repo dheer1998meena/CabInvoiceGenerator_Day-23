@@ -58,7 +58,7 @@ namespace CabIvoiceGeneratorNUnitTest
         {
             /// Arrange 
             ///initialising the instance of the invoice generator class
-            /// Creating the instance of the ride repository
+            /// Creating the instance of the ride repository.
             /// Initialising the ride array with details of the ride.
             /// Adding the ride data for the user to the ride repository
             ///Getting the ride data from the ride repository class.
