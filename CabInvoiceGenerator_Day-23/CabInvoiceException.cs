@@ -19,7 +19,7 @@ namespace CabInvoiceGenerator_Day_23
         public enum ExceptionType
         {
                 INVALID_DISTANCE, INVALID_TIME, NULL_RIDES,
-                INVALID_RIDE_TYPE
+                INVALID_RIDE_TYPE,INVALID_USER_ID
         }
         // Parameterised constructor to override the base class message.
         public CabInvoiceException(ExceptionType innerException, string message) : base(message)

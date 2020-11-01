@@ -19,6 +19,8 @@ namespace CabInvoiceGenerator_Day_23
         private readonly int costPerKm;
         private readonly double minimumCostPerKm;
         private readonly double minimumFare;
+        //UC4 Initiallizing the riderespository class.
+        RideRepository rideRepository = null;
         //Creating default constructor of the Invoice Generator Class. 
         public InvoiceGenerator()
         {
@@ -95,6 +97,44 @@ namespace CabInvoiceGenerator_Day_23
                 }
             }
             return new InvoiceSummary(rides.Length, totalFare,averageFare);
+        }
+        /// <summary>
+        /// Creating  method to return the invoice summary when passed with user ID.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="rides"></param>
+        public void AddRides(string userId, Ride[] rides)
+        {
+            try
+            {
+                // Calling the Add ride method of Ride Repository class
+                rideRepository.AddRide(userId, rides);
+            }
+            // Returning the custom exception in case the rides are null
+            catch (CabInvoiceException)
+            {
+                if (rides == null)
+                {
+                    throw new CabInvoiceException(CabInvoiceException.ExceptionType.NULL_RIDES, "Null Rides");
+                }
+            }
+           
+        }
+        /// <summary>
+        /// Creating  method to return the invoice summary when passed with user ID.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public InvoiceSummary GetInvoiceSummary(string userId)
+        {
+            try
+            {
+                return CalculateTotalFare(rideRepository.GetRides(userId));
+            }
+            catch(CabInvoiceException)
+            {
+                throw new CabInvoiceException(CabInvoiceException.ExceptionType.INVALID_USER_ID, "Invalid user Id");
+            }
         }
     }
 }

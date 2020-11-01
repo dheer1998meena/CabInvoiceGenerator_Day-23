@@ -50,5 +50,29 @@ namespace CabIvoiceGeneratorNUnitTest
             /// Assert
             Assert.AreEqual(invoiceSummary, expectedInvoiceSummary);
         }
+       /// <summary>
+        /// UC 4 : Given the user id, invoice service gets list of rides and returns invoice summary.
+        /// </summary>
+        [Test]
+        public void GivenUserId_InvoiceServiceGetsListOfRides_ShouldReturnInvoiceSummary()
+        {
+            /// Arrange 
+            ///initialising the instance of the invoice generator class
+            /// Creating the instance of the ride repository
+            /// Initialising the ride array with details of the ride.
+            /// Adding the ride data for the user to the ride repository
+            ///Getting the ride data from the ride repository class.
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            RideRepository repository = new RideRepository();
+            string userId = "xyz@12";
+            Ride[] rides = { new Ride(2.0, 9), new Ride(0.1, 1), new Ride(0.2, 1) };
+            repository.AddRide(userId, rides);
+            ///Act
+            Ride[] rideData = repository.GetRides(userId);
+            InvoiceSummary invoiceSummary = invoiceGenerator.CalculateTotalFare(rideData);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3, 39.0, 13.0);
+            /// Assert
+            Assert.AreEqual(expectedInvoiceSummary, invoiceSummary);
+        }
     }
 }
