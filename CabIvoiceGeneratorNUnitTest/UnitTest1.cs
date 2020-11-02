@@ -74,5 +74,21 @@ namespace CabIvoiceGeneratorNUnitTest
             /// Assert
             Assert.AreEqual(expectedInvoiceSummary, invoiceSummary);
         }
+        /// <summary>
+        /// UC5 Given Distance And Time Should Return TotalFare For PremiumRide.
+        /// </summary>
+        [Test]
+        public void GivenDistanceAndTime_ShouldReturnTotalFareForPremiumRide()
+        {
+            ///Arrange
+            double distance = 10;
+            int time = 10;
+            double expected = 170;
+            ///Act
+            this.invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
+            double actual = invoiceGenerator.CalculateTotalFare(distance, time);
+            ///Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
