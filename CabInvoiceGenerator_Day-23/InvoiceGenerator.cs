@@ -40,6 +40,13 @@ namespace CabInvoiceGenerator_Day_23
                     this.minimumCostPerKm = 10;
                     this.minimumFare = 5;
                 }
+                /// Initialising the default value for the PREMIUM Ride Type
+                else if (rideType.Equals(RideType.PREMIUM))
+                {
+                    this.minimumCostPerKm = 15;
+                    this.costPerKm = 2;
+                    this.minimumFare = 20;
+                }
             }
             catch (CabInvoiceException)
             {
